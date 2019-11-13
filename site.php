@@ -16,15 +16,6 @@ class Weapp_goupibutongModuleSite extends WeModuleSite {
 
     $query = load()->object("query");
     $settings = $query->from($this->tableSettings)->where("key", $_W["account"]["key"])->orderby("created_at", "DESC")->get();
-    if (!$settings) {
-      $settings = array(
-        "title" => "短视频去水印",
-        "key" => $_W["account"]["key"],
-        "banner1" => "",
-        "banner2" => "",
-        "banner3" => ""
-      );
-    }
     include $this->template("setting");
   }
 
@@ -36,20 +27,23 @@ class Weapp_goupibutongModuleSite extends WeModuleSite {
     if ($ID && $ID > 0) {
       $res = pdo_update($this->tableSettings, array(
         "title" => $_GPC["title"],
-        "banner1" => $_GPC["banner1"],
-        "banner2" => $_GPC["banner2"],
-        "banner3" => $_GPC["banner3"],
+        "logo" => $_GPC["logo"],
+        "share_img" => $_GPC["share_img"],
+        "share_txt" => $_GPC["share_txt"],
+        "keywords" => $_GPC["keywords"],
         "updated_at" => strtotime("now")
       ), array(
-        "id" => $ID
+        "id" => $ID,
+        "key" => $_W["account"]["key"]
       ));
     } else {
       $res = pdo_insert($this->tableSettings, array(
         "title" => $_GPC["title"],
         "key" => $_W["account"]["key"],
-        "banner1" => $_GPC["banner1"],
-        "banner2" => $_GPC["banner2"],
-        "banner3" => $_GPC["banner3"],
+        "logo" => $_GPC["logo"],
+        "share_img" => $_GPC["share_img"],
+        "share_txt" => $_GPC["share_txt"],
+        "keywords" => $_GPC["keywords"],
         "created_at" => strtotime("now")
       ));
     }
@@ -64,16 +58,7 @@ class Weapp_goupibutongModuleSite extends WeModuleSite {
     global $_GPC, $_W;
     $query = load()->object("query");
     $ads = $query->from($this->tableAds)->where("key", $_W["account"]["key"])->orderby("created_at", "DESC")->get();
-    if (!$ads) {
-      $ads = array(
-        "id" => false,
-        "key" => $_W["account"]["key"],
-        "enabled" => 1,
-        "ad01" => "",
-        "ad02" => "",
-        "ad03" => ""
-      );
-    }
+
     include $this->template("ads");
   }
 
@@ -85,19 +70,16 @@ class Weapp_goupibutongModuleSite extends WeModuleSite {
     if ($ID && $ID > 0) {
       $res = pdo_update($this->tableAds, array(
         "ad01" => $_GPC["ad01"],
-        "ad02" => $_GPC["ad02"],
-        "ad03" => $_GPC["ad03"],
         "enabled" => $_GPC["enabled"] ? 1 : 0,
         "updated_at" => strtotime("now")
       ), array(
-        "id" => $ID
+        "id" => $ID,
+        "key" => $_W["account"]["key"]
       ));
     } else {
       $res = pdo_insert($this->tableAds, array(
         "key" => $_W["account"]["key"],
         "ad01" => $_GPC["ad01"],
-        "ad02" => $_GPC["ad02"],
-        "ad03" => $_GPC["ad03"],
         "enabled" => $_GPC["enabled"] ? 1 : 0,
         "created_at" => strtotime("now")
       ));
