@@ -1,0 +1,57 @@
+{template 'common/header'}
+
+<div class="jumbotron">
+  <h2>广告设置</h2>
+  <p>设置小程序页面的展示广告列表以赚取收入</p>
+</div>
+
+
+<div class="main panel panel-default">
+  <form action="{php echo $this->createWebUrl('saveAds')}" method="post" class="panel-body">
+    <input type="hidden" name="id" value="{$ads['id']}" />
+    <div class="form-group">
+      <label class="col-xs-12 col-sm-3 col-md-2 control-label">首页底部广告 ID</label>
+      <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ad01" class="form-control" value="{$ads['ad01']}" />
+        <div class="help-block">第一个页面，支持视频列表下方的 Banner 广告 ID</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-xs-12 col-sm-3 col-md-2 control-label">解析页面视频广告 ID</label>
+      <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ad02" class="form-control" value="{$ads['ad02']}" />
+        <div class="help-block">第二个页面，解析页面的视频广告 ID</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-xs-12 col-sm-3 col-md-2 control-label">下载视频激励广告 ID</label>
+      <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ad03" class="form-control" value="{$ads['ad03']}" />
+        <div class="help-block">每天下载超过 3 次后点击保存按钮会弹出视频激励广告，这里输入 ID 即可</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-xs-12 col-sm-3 col-md-2 control-label">启用广告</label>
+      <div class="col-sm-9 col-xs-12">
+        <select class="form-control" name="enabled">
+          <option value="1">开启</option>
+          <option value="0" {php echo $ads['enabled']==0?'selected':''}>关闭</option>
+        </select>
+        <div class="help-block">如果禁用，则小程序不会显示任何设置的广告</div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-12">            
+      <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+      <div class="col-sm-9 col-xs-12">
+        <button type="submit" class="btn btn-primary col-lg-2">保存</button>
+      </div>
+      <input type="hidden" name="token" value="{$_W['token']}" />
+    </div>
+  </form>
+</div>
+
+{template 'common/footer'}
