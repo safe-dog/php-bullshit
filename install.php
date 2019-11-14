@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS $table_settings (
   `logo` varchar(255) COMMENT '小程序logo',
   `share_img` varchar(255) COMMENT '分享图片',
   `share_txt` varchar(255) COMMENT '分享文字',
-  `created_at` int(11) NOT NULL COMMENT '创建时间',
-  `updated_at` int(11) NOT NULL COMMENT '更新时间',
+  `created_at` int(11) COMMENT '创建时间',
+  `updated_at` int(11) COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS $table_ads (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `key` varchar(255) NOT NULL DEFAULT '' COMMENT '对应的小程序appid',
   `ad01` varchar(255) COMMENT '首页banner广告',
-  `enabled` int NOT NULL DEFAULT 1 COMMENT '开启广告',
-  `created_at` int(11) NOT NULL COMMENT '创建时间',
-  `updated_at` int(11) NOT NULL COMMENT '更新时间',
+  `enabled` int(11) NOT NULL DEFAULT 1 COMMENT '开启广告',
+  `created_at` int(11) COMMENT '创建时间',
+  `updated_at` int(11) COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 EOT;

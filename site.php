@@ -44,7 +44,8 @@ class Weapp_goupibutongModuleSite extends WeModuleSite {
         "share_img" => $_GPC["share_img"],
         "share_txt" => $_GPC["share_txt"],
         "keywords" => $_GPC["keywords"],
-        "created_at" => strtotime("now")
+        "created_at" => strtotime("now"),
+        "updated_at" => strtotime("now")
       ));
     }
     if (!empty($res)) {
@@ -81,7 +82,8 @@ class Weapp_goupibutongModuleSite extends WeModuleSite {
         "key" => $_W["account"]["key"],
         "ad01" => $_GPC["ad01"],
         "enabled" => $_GPC["enabled"] ? 1 : 0,
-        "created_at" => strtotime("now")
+        "created_at" => strtotime("now"),
+        "updated_at" => strtotime("now")
       ));
     }
     if (!empty($res)) {
