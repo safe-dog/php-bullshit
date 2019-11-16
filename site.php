@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @author vPush
+ * @author vPush，微信：hack_fish
  * @url
  */
 defined('IN_IA') or exit('Access Denied');
